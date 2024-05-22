@@ -1,3 +1,4 @@
+#include <string.h>
 #include "main.h"
 
 double g_indata_input[MAX+1][MAX+1], g_indata_tch[MAX+1][MAX+1];
@@ -24,12 +25,22 @@ int pa, po;
 
 extern void teach_input();
 
+char* _gets_s(char* buf, size_t size)
+{
+  if (fgets(buf, size, stdin)) {
+    buf[strcspn(buf, "\n")] = '\0';
+    return buf;
+  } else {
+    return NULL;
+  }
+}
+
 void inputi(char* s, int* i, int def)
 {
   char buf[128];
 
   printf("%s", s);
-  if (gets(buf) && *buf) *i = atoi(buf);
+  if (_gets_s(buf, sizeof buf) && *buf) *i = atoi(buf);
   else *i = def;
 }
 
@@ -38,7 +49,7 @@ void inputf(char* s, double* f, double def)
   char buf[128];
 
   printf("%s", s);
-  if (gets(buf) && *buf) *f = atof(buf);
+  if (_gets_s(buf, sizeof buf) && *buf) *f = atof(buf);
   else *f = def;
 }
 
