@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include "graphic.h"
   
 Display *d;
@@ -6,7 +7,7 @@ GC gc, gc2;
 XEvent e;
 unsigned long black, white;
 
-init()
+void init()
 {
   d = XOpenDisplay ("");
   black = BlackPixel(d, DefaultScreen(d));
@@ -26,37 +27,37 @@ init()
   sleep(1);
 }
 
-box(int x0, int y0, int x1, int y1)
+void box(int x0, int y0, int x1, int y1)
 {
   XDrawRectangle(d, w, gc, x0, y0, x1 - x0, y1 - y0);
 }
 
-line(int x0, int y0, int x1, int y1)
+void line(int x0, int y0, int x1, int y1)
 {
   XDrawLine(d, w, gc, x0,y0,x1,y1);
 }
 
-line2(int x0, int y0, int x1, int y1)
+void line2(int x0, int y0, int x1, int y1)
 {
   XDrawLine(d, w, gc2, x0,y0,x1,y1);
 }
 
-pointset(int x, int y)
+void pointset(int x, int y)
 {
   XDrawPoint(d,w,gc,x,y);
 }
 
-pointreset(int x, int y)
+void pointreset(int x, int y)
 {
   XDrawPoint(d,w,gc2,x,y);
 }
 
-xpause()
+void xpause()
 {
   XNextEvent(d,&e);
 }
 
-flush()
+void flush()
 {
   XFlush(d);
 }

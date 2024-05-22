@@ -8,12 +8,12 @@ extern GC gc, gc2;
 extern XEvent e;
 extern unsigned long black, white;
 
-extern init();
-extern line(int x0, int y0, int x1, int y1);
-extern line2(int x0, int y0, int x1, int y1);
-extern pointset(int x, int y);
-extern pointreset(int x, int y);
-extern xpause();
-extern flush();
-extern box(int, int, int, int);
+extern void init();
+extern void line(int x0, int y0, int x1, int y1);
+extern void line2(int x0, int y0, int x1, int y1);
+extern void pointset(int x, int y);
+extern void pointreset(int x, int y);
+extern void xpause();
+extern void flush();
+extern void box(int, int, int, int);
 

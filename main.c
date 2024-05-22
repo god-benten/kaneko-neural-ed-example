@@ -60,7 +60,7 @@ void cls()
   locate(0,0);
 }
 
-main()
+int main()
 {
   int seed;
 
