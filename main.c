@@ -111,6 +111,16 @@ int main()
       break;
     }
   }
+
+  for (;;) {
+    XNextEvent(d, &e);
+    switch (e.type) {
+      case DestroyNotify:
+        XSetCloseDownMode(d, DestroyAll);
+        XCloseDisplay(d);
+        return EXIT_SUCCESS;
+    }
+  }
 }
 
 
